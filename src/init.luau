@@ -315,7 +315,8 @@ do
 		local process = table.remove(self.queues, 1)
 
 		if process then
-			process:execute():await(true):andThen(self._activate, self, true)
+			process:execute():await(true)
+			task.defer(self._activate, self, true)
 		else
 			self._active = void
 		end
