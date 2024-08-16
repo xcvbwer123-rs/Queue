@@ -297,9 +297,10 @@ do
 	module.prototype = queueImpl
 
 	function module.new(id: string?)
+		local id = getId(id)
 		if not queues[id] then
 			queues[id] = setmetatable({
-				id = getId(id);
+				id = id;
 				queues = {};
 			}, module)
 		end
@@ -376,9 +377,10 @@ do
 	Waitter.waitters = waitters
 
 	function Waitter.new(id: string?)
+		local id = getId(id)
 		if not waitters[id] then
 			waitters[id] = setmetatable({
-				id = getId(id);
+				id = id;
 				container = {};
 				__threads = {};
 			}, Waitter)
@@ -468,9 +470,10 @@ do
 	RateQueue.rateQueues = rateQueues
 
 	function RateQueue.new(ratePerMinute: number, id: string?)
+		local id = getId(id)
 		if not rateQueues[id] then
 			rateQueues[id] = setmetatable({
-				id = getId(id);
+				id = id;
 				queues = {};
 				ratePerMinute = ratePerMinute;
 				__lastActivated = tick();
