@@ -252,7 +252,7 @@ do
 		if self.status ~= "completed" then
 			table.insert(self.__pipelines, {handler, {...}, true})
 		else
-			task.defer(resolve, {handler, {...}, true})
+			task.defer(resolve, self, {handler, {...}, true})
 		end
 
 		return self
@@ -262,7 +262,7 @@ do
 		if self.status ~= "completed" then
 			table.insert(self.__pipelines, {handler, {...}, false})
 		else
-			task.defer(resolve, {handler, {...}, false})
+			task.defer(resolve, self, {handler, {...}, false})
 		end
 
 		return self
@@ -272,7 +272,7 @@ do
 		if self.status ~= "completed" then
 			table.insert(self.__pipelines, {handler, {...}})
 		else
-			task.defer(resolve, {handler, {...}})
+			task.defer(resolve, self, {handler, {...}})
 		end
 
 		return self
