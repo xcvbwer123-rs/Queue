@@ -331,7 +331,7 @@ do
 			table.insert(self.queues, Process)
 		end
 
-		queueImpl:_activate()
+		self:_activate()
 
 		return Process
 	end
